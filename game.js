@@ -24,7 +24,7 @@ if (playerChoice === computerChoice) {
     ties++;
     alert("It's a tie!");
 }
-else if (((playerChoice == "R") + (computerChoice == "S")) || ((playerChoice = "P") + (computerChoice = "R")) || ((playerChoice = "S") + (computerChoice = "P"))) {
+else if (((playerChoice === "R") + (computerChoice === "S")) || ((playerChoice === "P") + (computerChoice === "R")) || ((playerChoice === "S") + (computerChoice === "P"))) {
     wins++;
     alert("You won!");
 } else {
@@ -33,6 +33,7 @@ else if (((playerChoice == "R") + (computerChoice == "S")) || ((playerChoice = "
 }
 
 // show stats (number of wins, losses, ties)
+alert("Wins: " + wins + "\n" + "Losses: " + losses + "\n" + "Ties: " + ties)
 
 // play again?   //confirm?
     // restart the game
