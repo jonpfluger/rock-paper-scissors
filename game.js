@@ -9,15 +9,13 @@ var options = ["R", "P", "S"];
 var playAgain = true;
 
 while (playAgain) {
-// Define var for playerChoice
+    // Define var for playerChoice
+    // prompt() playerChoice
     var playerChoice = prompt("Choose R, P, or S");
 
     // Define var for computerChoice
-    var computerChoice = options[Math.floor(Math.random() * options.length)];
-
-    // prompt() playerChoice
-
     // randomly choose computerChoice
+    var computerChoice = options[Math.floor(Math.random() * options.length)];
 
     if (computerChoice === options[0]) {
         alert("Computer chose R");
@@ -26,8 +24,6 @@ while (playAgain) {
     } else if (computerChoice === options[2]) {
         alert("Computer chose S");
     }
-
-    // Math.floor(Math.random() * 3);
 
     // compare choices
     // display (alert) comparison results (won, tied, lost)
