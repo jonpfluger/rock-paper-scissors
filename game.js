@@ -8,9 +8,26 @@ var choices = ["r", "p", "s"];
 var humanScore = 0;
 var botScore = 0;
 
-function startRound() {
-    console.log("yay")
-}
+function startRound(event) {
+    var humanChoice = event.target.dataset.letter;
+
+    var random = Math.floor(Math.random() * choices.length);
+    var computerChoice = choices[random];
+
+    var result;
+    if (humanChoice === computerChoice) {
+        result = "TIED!";
+    } else if (humanChoice === "r" && computerChoice === "s" || humanChoice === "p" && computerChoice === "r" || humanChoice === "s" && computerChoice === "p") {
+        humanScore++;
+        result = "YOU WON!";
+    } else {
+        botScore++;
+        result = "BOT WON!";
+    };
+
+    console.log(result, humanScore, botScore);
+
+};
 
 rockImg.addEventListener('click', startRound);
 paperImg.addEventListener('click', startRound);
