@@ -63,8 +63,13 @@ h1 {
 .choice {
     cursor: pointer;
     transition: all 260ms ease-out;
+    text-align: center;
 }
 
 .choice:hover {
     transform: scale(1.2);
+}
+
+.choice img {
+    display: block;
 }

@@ -3,6 +3,7 @@ var botScoreEl = document.getElementById("bot-score");
 var rockEl = document.getElementById("rock");
 var paperEl = document.getElementById("paper");
 var scissorsEl = document.getElementById("scissors");
+var resultEl = document.getElementById('result');
 
 var choicesElements = [rockEl, paperEl, scissorsEl];
 
@@ -10,9 +11,33 @@ var choices = ["r", "p", "s"];
 var humanScore = 0;
 var botScore = 0;
 
+function updateScores() {
+    humanScoreEl.textContent = humanScore;
+    botScoreEl.textContent = botScore;
+};
+
+function showResults(humanChosenEl, computerChosenEl, result) {
+    resultEl.textContent = result;
+    updateScores();
+    // hide all three images
+    choicesElements.forEach(function(el) {
+        el.style.display = 'none';
+    })
+    humanChosenEl.style.display = "block";
+    computerChosenEl.style.display = "block";
+
+    var humanSpan = document.createElement('span');
+    humanSpan.textContent = "Human";
+    humanChosenEl.appendChild(humanSpan);
+
+    var botSpan = document.createElement('span');
+    botSpan.textContent = "Bot";
+    computerChosenEl.appendChild(botSpan);
+}
+
 function startRound(event) {
     var humanChosenEl;
-    
+
     // make sure were referring to the correct element
     if (event.target.matches('img')) {
         humanChosenEl = event.target.parentElement;
@@ -39,12 +64,7 @@ function startRound(event) {
         result = "BOT WON!";
     };
 
-    // hide all three images
-    choicesElements.forEach(function(img) {
-        img.style.display = 'none';
-    })
-    humanChosenEl.style.display = "block";
-    computerChosenEl.style.display = "block";
+    showResults(humanChosenEl, computerChosenEl, result);
 
 };
 
