@@ -53,7 +53,7 @@ h1 {
     font-size: 50px;
 }
 
-main {
+#choices-container {
     display: flex;
     justify-content: space-evenly;
     margin: 200px auto 0;
