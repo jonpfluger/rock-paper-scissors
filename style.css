@@ -73,3 +73,7 @@ h1 {
 .choice img {
     display: block;
 }
+
+.loser {
+    opacity: 0.5;
+}

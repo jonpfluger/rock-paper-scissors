@@ -11,6 +11,18 @@ var choices = ["r", "p", "s"];
 var humanScore = 0;
 var botScore = 0;
 
+function resetUI() {
+    choicesElements.forEach(function(el) {
+        resultEl.textContent = "Rock Paper Scissors";
+        el.style.display = 'block';
+        el.classList.remove('loser');
+        var spans = el.querySelectorAll('span');
+        for (let i = 0; i < spans.length; i++) {
+            spans[i].remove();
+        };
+    });
+};
+
 function updateScores() {
     humanScoreEl.textContent = humanScore;
     botScoreEl.textContent = botScore;
@@ -33,6 +45,17 @@ function showResults(humanChosenEl, computerChosenEl, result) {
     var botSpan = document.createElement('span');
     botSpan.textContent = "Bot";
     computerChosenEl.appendChild(botSpan);
+
+    if (result === "YOU WON!") {
+        computerChosenEl.classList.add('loser');
+    } else if (result === "BOT WON!") {
+        humanChosenEl.classList.add('loser');
+    }
+
+    setTimeout(function () {
+        resetUI();
+    }, 3000);
+
 }
 
 function startRound(event) {
