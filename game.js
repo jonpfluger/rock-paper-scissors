@@ -10,10 +10,13 @@ var choicesElements = [rockEl, paperEl, scissorsEl];
 var choices = ["r", "p", "s"];
 var humanScore = 0;
 var botScore = 0;
+var clickable = true;
 
 function resetUI() {
+    clickable = true;
+    resultEl.textContent = "Rock Paper Scissors";
+    // show all three choices
     choicesElements.forEach(function(el) {
-        resultEl.textContent = "Rock Paper Scissors";
         el.style.display = 'block';
         el.classList.remove('loser');
         var spans = el.querySelectorAll('span');
@@ -29,9 +32,10 @@ function updateScores() {
 };
 
 function showResults(humanChosenEl, computerChosenEl, result) {
+    clickable = false;
     resultEl.textContent = result;
     updateScores();
-    // hide all three images
+    // hide all three choices
     choicesElements.forEach(function(el) {
         el.style.display = 'none';
     })
@@ -59,6 +63,8 @@ function showResults(humanChosenEl, computerChosenEl, result) {
 }
 
 function startRound(event) {
+    if (!clickable) return;
+
     var humanChosenEl;
 
     // make sure were referring to the correct element
@@ -95,68 +101,3 @@ rockEl.addEventListener('click', startRound);
 paperEl.addEventListener('click', startRound);
 scissorsEl.addEventListener('click', startRound);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Define var for wins, losses, and ties
-// var wins = 0;
-// var losses = 0;
-// var ties = 0;
-
-// // Define array for choices
-// var options = ["R", "P", "S"];
-
-// var playAgain = true;
-
-// while (playAgain) {
-//     // Define var for playerChoice
-//     // prompt() playerChoice
-//     var playerChoice = prompt("Choose R, P, or S");
-
-//     // Define var for computerChoice
-//     // randomly choose computerChoice
-//     var computerChoice = options[Math.floor(Math.random() * options.length)];
-
-//     if (computerChoice === options[0]) {
-//         alert("Computer chose R");
-//     } else if (computerChoice === options[1]) {
-//         alert("Computer chose P");
-//     } else if (computerChoice === options[2]) {
-//         alert("Computer chose S");
-//     }
-
-//     // compare choices
-//     // display (alert) comparison results (won, tied, lost)
-//     if (playerChoice === computerChoice) {
-//         ties++;
-//         alert("It's a tie!");
-//     } else if (((playerChoice === "R") && (computerChoice === "S")) || ((playerChoice === "P") && (computerChoice === "R")) || ((playerChoice === "S") && (computerChoice === "P"))) {
-//         wins++;
-//         alert("You won!");
-//     } else {
-//         losses++;
-//         alert("You lost!");
-//     }
-
-//     // show stats (number of wins, losses, ties)
-//     alert("Wins: " + wins + "\n" + "Losses: " + losses + "\n" + "Ties: " + ties)
-
-//     // play again?   //confirm?
-//         // restart the game
-//     // otherwise
-//         // thanks for playing!
-
-//     playAgain = confirm("Play again?");
-// }
