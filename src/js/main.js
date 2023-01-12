@@ -1,3 +1,4 @@
+import '../css/style.css'
 import { rockEl, paperEl, scissorsEl, resultEl, humanScoreEl, botScoreEl } from './elements'
 
 var choicesElements = [rockEl, paperEl, scissorsEl];
