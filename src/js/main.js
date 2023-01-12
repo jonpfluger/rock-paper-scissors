@@ -1,5 +1,6 @@
 import '../css/style.css'
 import { rockEl, paperEl, scissorsEl, resultEl, humanScoreEl, botScoreEl } from './elements'
+import { getRandomIdx } from './helpers'
 
 var choicesElements = [rockEl, paperEl, scissorsEl];
 
@@ -72,7 +73,7 @@ function startRound(event) {
 
     var humanChoice = humanChosenEl.dataset.letter;
 
-    var random = Math.floor(Math.random() * choices.length);
+    var random = getRandomIdx(choices.length)
     var computerChoice = choices[random];
     var computerChosenEl = document.querySelector('[data-letter="'+ computerChoice +'"]');
 
@@ -97,3 +98,10 @@ rockEl.addEventListener('click', startRound);
 paperEl.addEventListener('click', startRound);
 scissorsEl.addEventListener('click', startRound);
 
+if (module.hot) {
+    module.hot.accept(err => {
+        if (err) {
+            console.log("HMR Error", err)
+        }
+    })
+}
